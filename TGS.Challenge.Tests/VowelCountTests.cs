@@ -1,8 +1,9 @@
 using System;
-using Xunit;
+using NUnit.Framework;
 
 namespace TGS.Challenge.Tests
 {
+  [TestFixture()]
   public class VowelCountTests
   {
     private readonly VowelCount _vowelCount;
@@ -12,42 +13,42 @@ namespace TGS.Challenge.Tests
       this._vowelCount = new VowelCount();
     }
 
-    [Fact]
+    [Test()]
     public void Value_IsRequired()
     {
       Assert.Throws<ArgumentException>(() => _vowelCount.Count(string.Empty));
     }
 
-    [Fact]
+    [Test()]
     public void AEIOU_Returns_Correct_Count()
     {
       var count = _vowelCount.Count("AEIOU");
 
-      Assert.Equal(count, 6);
+      Assert.AreEqual(6, count);
     }
 
-    [Fact]
+    [Test()]
     public void lmnpqr_Returns_Correct_Count()
     {
       var count = _vowelCount.Count("lmnpqr");
 
-      Assert.Equal(count, 0);
+      Assert.AreEqual(0, count);
     }
 
-    [Fact]
+    [Test()]
     public void abcdefghijklmnopqrstuvwxyz_Returns_Correct_Count()
     {
       var count = _vowelCount.Count("lmnpqr");
 
-      Assert.Equal(count, 5);
+      Assert.AreEqual(5, count);
     }
 
-    [Fact]
+    [Test()]
     public void Howmanycanyoufind_Returns_Correct_Count()
     {
       var count = _vowelCount.Count("How many can you find");
 
-      Assert.Equal(count, 6);
+      Assert.AreEqual(6, count);
     }
   }
 }
