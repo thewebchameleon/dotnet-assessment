@@ -1,8 +1,9 @@
 using System;
-using Xunit;
+using NUnit.Framework;
 
 namespace TGS.Challenge.Tests
 {
+  [TestFixture()]
   public class AnagramTests
   {
     private readonly Anagram _anagram;
@@ -12,56 +13,56 @@ namespace TGS.Challenge.Tests
       this._anagram = new Anagram();
     }
 
-    [Fact]
+    [Test()]
     public void Word1_IsRequired()
     {
       Assert.Throws<ArgumentException>(() => _anagram.AreAnagrams(string.Empty, "ABC"));
     }
 
-    [Fact]
+    [Test()]
     public void Word2_IsRequired()
     {
       Assert.Throws<ArgumentException>(() => _anagram.AreAnagrams("ABC", string.Empty));
     }
 
-    [Fact]
+    [Test()]
     public void Dormitory_IsAnagram_Dirty_room()
     {
       var result = _anagram.AreAnagrams("Dormitory", "Dirty_room");
 
-      Assert.True(result);
+      Assert.IsTrue(result);
     }
 
-    [Fact]
+    [Test()]
     public void Funeral_IsAnagram_Reel_fun()
     {
       var result = _anagram.AreAnagrams("Funeral", "Reel fun");
 
-      Assert.True(result);
+      Assert.IsTrue(result);
     }
 
-    [Fact]
+    [Test()]
     public void School_master_IsAnagram_The_classroom()
     {
       var result = _anagram.AreAnagrams("School master?!", "!?The classroom");
 
-      Assert.True(result);
+      Assert.IsTrue(result);
     }
     
-    [Fact]
+    [Test()]
     public void Listen_Is_NOT_Anagram_Silence()
     {
       var result = _anagram.AreAnagrams("Listen", "Silence");
 
-      Assert.False(result);
+      Assert.IsFalse(result);
     }
 
-    [Fact]
+    [Test()]
     public void Funeral_IsAnagram_Real_fun()
     {
       var result = _anagram.AreAnagrams("Funeral", "Real fun");
 
-      Assert.True(result);
+      Assert.IsTrue(result);
     }
   }
 }

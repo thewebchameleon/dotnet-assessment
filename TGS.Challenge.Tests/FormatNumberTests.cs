@@ -1,8 +1,10 @@
 using System;
-using Xunit;
+using NUnit.Framework;
+
 
 namespace TGS.Challenge.Tests
-{
+{ 
+  [TestFixture()]
   public class FormatNumberTests
   {
     private readonly FormatNumber _formatNumber;
@@ -11,80 +13,80 @@ namespace TGS.Challenge.Tests
       this._formatNumber = new FormatNumber();
     }
 
-    [Fact]
+    [Test()]
     public void NegativeNumber_Throws_ArgumentOutOfRangeException()
     {
       Assert.Throws<ArgumentOutOfRangeException>(() => _formatNumber.Format(-1));
     }
 
-    [Fact]
+    [Test()]
     public void BiggerThanMaxNumber_Throws_ArgumentOutOfRangeException()
     {
       Assert.Throws<ArgumentOutOfRangeException>(() => _formatNumber.Format(1000000001));
     }
 
-    [Fact]
+    [Test()]
     public void Value_1_Returns_ValidString()
     {
       var formatted = _formatNumber.Format(1);
 
-      Assert.Equal("1", formatted);
+      Assert.AreEqual("1", formatted);
     }
 
-    [Fact]
+    [Test()]
     public void Value_10_Returns_ValidString()
     {
       var formatted = _formatNumber.Format(1);
 
-      Assert.Equal("10", formatted);
+      Assert.AreEqual("10", formatted);
     }
 
-    [Fact]
+    [Test()]
     public void Value_100_Returns_ValidString()
     {
       var formatted = _formatNumber.Format(1);
 
-      Assert.Equal("1,00", formatted);
+      Assert.AreEqual("1,00", formatted);
     }
 
-    [Fact]
+    [Test()]
     public void Value_1000_Returns_ValidString()
     {
       var formatted = _formatNumber.Format(1);
 
-      Assert.Equal("1,000", formatted);
+      Assert.AreEqual("1,000", formatted);
     }
   
-    [Fact]
+    [Test()]
     public void Value_10000_Returns_ValidString()
     {
       var formatted = _formatNumber.Format(1);
 
-      Assert.Equal("10,000", formatted);
+      Assert.AreEqual("10,000", formatted);
     }
 
-    [Fact]
+    [Test()]
     public void Value_100000_Returns_ValidString()
     {
       var formatted = _formatNumber.Format(1);
 
-      Assert.Equal("100,000", formatted);
+      Assert.AreEqual("100,000", formatted);
     }
     
-    [Fact]
+    [Test()]
     public void Value_1000000_Returns_ValidString()
     {
       var formatted = _formatNumber.Format(1);
 
-      Assert.Equal("1,000,000", formatted);
+      Assert.AreEqual("1,000,000", formatted);
     }
 
-    [Fact]
+    [Test()]
     public void Value_35235235_Returns_ValidString()
     {
       var formatted = _formatNumber.Format(1);
 
-      Assert.Equal("35,2352,35", formatted);
+      Assert.AreEqual("35,2352,35", formatted);
     }
   }  
 }
