@@ -16,7 +16,25 @@ namespace TGS.Challenge
     {
         public int Count(string value)
         {
-            return -1;
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Value cannot be null or empty");
+            }
+
+            int vowelCount = 0;
+            var vowelList = "aeiou";
+
+            foreach (var charValue in value.ToLower())
+            {
+                foreach (var vowelCharValue in vowelList)
+                {
+                    if (charValue == vowelCharValue)
+                    {
+                        vowelCount++;
+                    }
+                }
+            }
+            return vowelCount;
         }
     }
 }
