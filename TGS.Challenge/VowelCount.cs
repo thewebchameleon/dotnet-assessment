@@ -16,10 +16,7 @@ namespace TGS.Challenge
     {
         public int Count(string value)
         {
-            if (string.IsNullOrEmpty(value))
-            {
-                throw new ArgumentException("Value cannot be null or empty");
-            }
+            ValidateConstraints(value);
 
             int vowelCount = 0;
             var vowelList = "aeiou";
@@ -35,6 +32,14 @@ namespace TGS.Challenge
                 }
             }
             return vowelCount;
+        }
+
+        private void ValidateConstraints(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("Value cannot be null or empty");
+            }
         }
     }
 }
