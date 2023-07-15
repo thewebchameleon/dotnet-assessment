@@ -14,16 +14,16 @@ namespace TGS.Challenge
      */
     public class VowelCount
     {
+        private readonly string _vowelList = "aeiou";
+
         public int Count(string value)
         {
             ValidateConstraints(value);
 
             int vowelCount = 0;
-            var vowelList = "aeiou";
-
             foreach (var charValue in value.ToLower())
             {
-                foreach (var vowelCharValue in vowelList)
+                foreach (var vowelCharValue in _vowelList)
                 {
                     if (charValue == vowelCharValue)
                     {

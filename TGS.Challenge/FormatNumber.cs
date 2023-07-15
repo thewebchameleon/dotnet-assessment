@@ -64,7 +64,7 @@ namespace TGS.Challenge
         {
             if (value < 0)
             {
-                throw new ArgumentOutOfRangeException("Value must be greater than 0");
+                throw new ArgumentOutOfRangeException("Value must be a positive number");
             }
 
             if (value >= 1000000000)
